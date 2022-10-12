@@ -33,6 +33,19 @@
             @enderror
         </div>
 
+
+        <span class="form-check-label">Tags</span>
+
+        <div class="card p-2 my-2">
+            @foreach ($tags as $tag)
+            <div class="form-group form-check">
+
+                <input name="tags[]" type="checkbox" class="form-check-input" id="tag_{{$tag->id}}" value="{{$tag->id}}">
+                <label class="form-check-label" for="tag_{{$tag->id}}">{{$tag->name}}</label>
+            </div>
+            @endforeach
+        </div>
+
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{old('title')}}">
