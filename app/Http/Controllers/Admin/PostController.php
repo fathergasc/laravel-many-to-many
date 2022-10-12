@@ -49,7 +49,8 @@ class PostController extends Controller
             [
                 'title' => 'required|max:255',
                 'content' => 'required',
-                'category_id' => 'nullable|exists:categories,id'
+                'category_id' => 'nullable|exists:categories,id',
+                'tags' => 'exists:tags,id'
             ]
         );
 
@@ -65,6 +66,12 @@ class PostController extends Controller
         //end slug method
 
         $post->save();
+
+
+        //checks if the tags array received from the tags checkboxes in admin.create isn't empty and then writes the data in the pivot table
+        if (array_key_exists('tags', $data)) {
+            $post->tags()->sync($data['tags']);
+        }
 
         return redirect()->route('admin.posts.index')->with('status', 'Post created!');
     }
