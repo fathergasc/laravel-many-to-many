@@ -12,6 +12,7 @@
                     <th scope="col">Content</th>
                     <th scope="col">Slug</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Tags</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -23,6 +24,11 @@
                         <td>{{$post->content}}</td>
                         <td>{{$post->slug}}</td>
                         <td>{{($post->category)?$post->category->name:'No category'}}</td>
+                        <td>
+                            @foreach ($post->tags as $tag)
+                                {{$tag->name}};
+                            @endforeach
+                        </td>
                         <td>
                             <a class="btn btn-warning m-1" href="{{route('admin.posts.show', ['post' => $post->id])}}">Show</a>
                             <a class="btn btn-info m-1" href="{{route('admin.posts.edit', ['post' => $post->id])}}">Edit</a>
