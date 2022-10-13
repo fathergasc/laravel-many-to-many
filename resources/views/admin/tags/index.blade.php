@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        {{-- <a href="{{route('admin.categories.create')}}" class="btn btn-secondary my-1">Add Category</a> --}}
+        {{-- <a href="{{route('admin.tags.create')}}" class="btn btn-secondary my-1">Add Tag</a> --}}
         <div>
             <table class="table table-dark table-striped">
                 <thead>
@@ -14,15 +14,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($tags as $tag)
                     <tr>
-                        <th scope="row">{{$category->id}}</th>
-                        <td>{{$category->name}}</td>
-                        <td>{{$category->slug}}</td>
+                        <th scope="row">{{$tag->id}}</th>
+                        <td>{{$tag->name}}</td>
+                        <td>{{$tag->slug}}</td>
                         <td>
-                            <a class="btn btn-warning m-1" href="{{route('admin.categories.show', ['category' => $category->id])}}">Show</a>
-                            {{-- <a class="btn btn-info m-1" href="{{route('admin.categories.edit', ['post' => $post->id])}}">Edit</a>
-                            <form class="m-1 d-inline" action="{{route('admin.categories.destroy', ['post' => $post->id])}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this entry?')">
+                            <a class="btn btn-warning m-1" href="{{route('admin.tags.show', ['tag' => $tag->id])}}">Show</a>
+                            {{-- <a class="btn btn-info m-1" href="{{route('admin.tags.edit', ['post' => $post->id])}}">Edit</a>
+                            <form class="m-1 d-inline" action="{{route('admin.tags.destroy', ['post' => $post->id])}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this entry?')">
 
                                 @csrf
                                 @method('DELETE')
