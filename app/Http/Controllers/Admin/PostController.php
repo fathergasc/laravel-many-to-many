@@ -113,7 +113,8 @@ class PostController extends Controller
             [
                 'title' => 'required|max:255',
                 'content' => 'required',
-                'category_id' => 'nullable|exists:categories,id'
+                'category_id' => 'nullable|exists:categories,id',
+                'tags' => 'exists:tags,id'
             ]
         );
 
@@ -121,6 +122,12 @@ class PostController extends Controller
 
         if($post->title !== $data['title']) {
             $data['slug'] = $this->generateSlug($data['title']);
+        }
+
+        if (array_key_exists('tags', $data)) {
+            $post->tags()->sync($data['tags']);
+        } else {
+            $post->tags()->sync([]);
         }
 
         $post->update($data);
