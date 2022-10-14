@@ -124,7 +124,11 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h1", [_vm._v("Work in progress")]), _vm._v(" "), _c("h2", [_vm._v("Sito in costruzione")])]);
+  return _c("div", [_c("h1", [_vm._v("Work in progress")]), _vm._v(" "), _c("h2", [_vm._v("Sito in costruzione")]), _vm._v(" "), _c("a", {
+    attrs: {
+      href: "/admin"
+    }
+  }, [_vm._v("Go to back-office")])]);
 }];
 render._withStripped = true;
 
